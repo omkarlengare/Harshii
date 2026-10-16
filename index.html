@@ -1,0 +1,738 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Favorite Person ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Great+Vibes&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --pink: #ff80ac;
+  --rose: #ff4d88;
+  --cream: #fff4f7;
+  --purple: #24122f;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: "DM Sans", sans-serif;
+  color: #fff;
+  background: #180c24;
+  overflow-x: hidden;
+}
+h1,h2,h3 { font-family: "Playfair Display",serif; }
+button { font: inherit; cursor: pointer; }
+section {
+  min-height: 90vh;
+  padding: 100px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+.hero {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 20% 20%, #82315b88, transparent 45%),
+    radial-gradient(circle at 80% 75%, #623a9288, transparent 45%),
+    linear-gradient(140deg,#190b25,#39132f,#1d102d);
+}
+.script {
+  font-family: "Great Vibes", cursive;
+  color: #ffc3d9;
+  font-size: clamp(3.8rem, 10vw, 7rem);
+  font-weight: 400;
+  margin: 10px 0;
+}
+.hero h1 {
+  font-size: clamp(2.3rem,7vw,5rem);
+  max-width: 900px;
+  line-height: 1.15;
+}
+.subtitle {
+  color: #f4c9dd;
+  line-height: 1.9;
+  max-width: 620px;
+  font-size: 1.05rem;
+}
+.tag {
+  border: 1px solid #ffb5d255;
+  border-radius: 30px;
+  padding: 10px 20px;
+  color: #ffc5da;
+  letter-spacing: 3px;
+  font-size: .72rem;
+  text-transform: uppercase;
+}
+.btn {
+  border: 0;
+  padding: 15px 29px;
+  border-radius: 40px;
+  color: #311327;
+  font-weight: 700;
+  background: linear-gradient(120deg,#ffb3d0,#ff76aa);
+  box-shadow: 0 8px 35px #ff589344;
+  transition: .25s;
+  margin: 12px 5px;
+}
+.btn:hover { transform: translateY(-4px) scale(1.03); }
+.btn.secondary {
+  background: transparent;
+  border: 1px solid #ffb0cc88;
+  color: #ffd0e2;
+  box-shadow: none;
+}
+.heading {
+  font-size: clamp(2.2rem,6vw,3.7rem);
+  margin: 10px 0;
+}
+.small-label {
+  color: #ff94bd;
+  letter-spacing: 3px;
+  font-size: .75rem;
+  text-transform: uppercase;
+}
+.card {
+  background: #ffffff0c;
+  border: 1px solid #ffffff20;
+  backdrop-filter: blur(14px);
+  border-radius: 25px;
+  padding: 32px;
+  width: min(100%,650px);
+  box-shadow: 0 15px 50px #00000022;
+}
+#countdown {
+  display: flex;
+  gap: 12px;
+  margin: 35px 0;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.timebox {
+  background: #ffffff12;
+  border: 1px solid #ffffff22;
+  padding: 18px;
+  border-radius: 18px;
+  min-width: 85px;
+}
+.timebox strong {
+  display: block;
+  font-size: 2rem;
+  color: #ffb2d1;
+}
+.timebox span { font-size: .7rem; color: #e9c6d8; }
+.heart {
+  position: fixed;
+  pointer-events: none;
+  z-index: 50;
+  animation: floatUp linear forwards;
+}
+@keyframes floatUp {
+  from { transform: translateY(0) rotate(0); opacity: 1; }
+  to { transform: translateY(-110vh) rotate(40deg); opacity: 0; }
+}
+#quiz { background: linear-gradient(160deg,#27112d,#411c3c); }
+.progress {
+  height: 5px;
+  background: #ffffff25;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 25px;
+}
+.progress div {
+  height: 100%;
+  background: #ff8bb6;
+  transition: width .4s;
+}
+.option {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  margin: 12px 0;
+  background: #ffffff0c;
+  color: white;
+  border: 1px solid #ffffff30;
+  border-radius: 14px;
+  transition: .2s;
+}
+.option:hover { background: #ff83b533; border-color: #ff8bb6; }
+#answerReveal {
+  color: #ffbcd5;
+  line-height: 1.8;
+  margin: 20px 0;
+}
+#letter { background: linear-gradient(#31172f,#1d1027); }
+.envelope {
+  width: 280px;
+  height: 190px;
+  background: #ff9cbe;
+  border-radius: 8px;
+  margin: 45px auto;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 0 20px 55px #0005;
+  transition: transform .3s;
+}
+.envelope:hover { transform: translateY(-8px); }
+.envelope:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #ffc2d8;
+  clip-path: polygon(0 0,50% 60%,100% 0);
+  border-radius: 8px;
+}
+.seal {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 2;
+  background: #e84781;
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-size: 26px;
+}
+.letter-paper {
+  display: none;
+  width: min(100%,650px);
+  background: #fff9f5;
+  color: #4d2a38;
+  padding: clamp(25px,6vw,55px);
+  border-radius: 12px;
+  text-align: left;
+  box-shadow: 0 20px 65px #0005;
+  animation: appear .7s ease;
+}
+.letter-paper p { line-height: 2; }
+.letter-paper h2 { color: #d83f79; }
+@keyframes appear {
+  from { opacity: 0; transform: translateY(30px) scale(.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+#reasons { background: #22102c; }
+.reason-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 18px;
+  max-width: 950px;
+  width: 100%;
+  margin-top: 35px;
+}
+.reason {
+  height: 200px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+.reason-inner {
+  position: relative;
+  height: 100%;
+  transition: transform .7s;
+  transform-style: preserve-3d;
+}
+.reason.flipped .reason-inner { transform: rotateY(180deg); }
+.front,.back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border: 1px solid #ff9dc344;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+  background: #ffffff0b;
+}
+.front span { font-size: 3rem; }
+.back {
+  transform: rotateY(180deg);
+  background: #743552;
+  line-height: 1.7;
+}
+#universe {
+  background: radial-gradient(ellipse at center,#302052,#100b1e 75%);
+  min-height: 100vh;
+}
+.sky {
+  position: relative;
+  width: min(100%,800px);
+  height: 350px;
+  margin-top: 30px;
+}
+.star {
+  position: absolute;
+  background: none;
+  border: none;
+  color: #ffe8ac;
+  font-size: 30px;
+  filter: drop-shadow(0 0 10px #ffe4a4);
+  animation: twinkle 2s ease-in-out infinite alternate;
+}
+@keyframes twinkle {
+  to { opacity: .4; transform: scale(.8); }
+}
+#starMessage { min-height: 60px; color: #ffd0e0; }
+#finale {
+  background: radial-gradient(circle at center,#713057,#2c1239 70%);
+}
+.gift {
+  font-size: 100px;
+  cursor: pointer;
+  animation: bounce 2s infinite;
+  border: none;
+  background: none;
+}
+@keyframes bounce {
+  50% { transform: translateY(-15px); }
+}
+#surprise {
+  display: none;
+  animation: appear 1s;
+}
+#surprise h1 {
+  font-size: clamp(3rem,9vw,6rem);
+  color: #ffb3d1;
+}
+footer {
+  padding: 35px;
+  text-align: center;
+  background: #150a1e;
+  color: #e7b3ca;
+  font-size: .85rem;
+}
+.fade-in {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: 1s;
+}
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+@media(max-width:500px) {
+  section { padding: 75px 18px; }
+  .card { padding: 22px; }
+  .sky { height: 290px; }
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero" id="home">
+  <div class="tag">A little universe made just for you</div>
+  <p class="script">My Love</p>
+  <h1>Some people make the world beautiful. <br>You make mine magical.</h1>
+  <p class="subtitle">
+    This isn't just a birthday website.
+    It's a tiny corner of the internet made for the person
+    who has the biggest place in my heart.
+  </p>
+  <div id="countdown"></div>
+  <button class="btn" onclick="goTo('quiz')">
+    Begin Your Little Adventure ♡
+  </button>
+  <p style="color:#dba6c0;font-size:.8rem;margin-top:30px">
+    Made with all my love, just for you.
+  </p>
+</section>
+
+<section id="quiz">
+  <p class="small-label">Chapter One · A Little Game</p>
+  <h2 class="heading fade-in">Let's Play, Pretty Girl 💗</h2>
+  <p class="subtitle">A few questions. No wrong answers. Just us.</p>
+  <div class="card fade-in">
+    <div class="progress"><div id="progressBar"></div></div>
+    <p id="questionNumber" class="small-label"></p>
+    <h2 id="question"></h2>
+    <div id="options"></div>
+    <p id="answerReveal"></p>
+    <button class="btn" id="nextQuestion" style="display:none"
+      onclick="nextQ()">Next Question →</button>
+  </div>
+</section>
+
+<section id="letter">
+  <p class="small-label">Chapter Two · Words From My Heart</p>
+  <h2 class="heading fade-in">I Wrote You Something 💌</h2>
+  <p class="subtitle">Some feelings deserve more than a text message.</p>
+  <div id="envelope" class="envelope" onclick="openLetter()">
+    <div class="seal">♥</div>
+  </div>
+  <p id="envelopeHint">Tap the envelope to open your letter</p>
+
+  <div class="letter-paper" id="letterPaper">
+    <h2>To My Favorite Human,</h2>
+    <p id="loveLetter"></p>
+    <p style="font-family:'Great Vibes';font-size:2.5rem;color:#d83f79">
+      Forever yours,<br><span id="signature"></span> ♡
+    </p>
+  </div>
+  <button class="btn secondary" onclick="goTo('reasons')">
+    There's More For You →
+  </button>
+</section>
+
+<section id="reasons">
+  <p class="small-label">Chapter Three · Little Things</p>
+  <h2 class="heading fade-in">Reasons You're So Special</h2>
+  <p class="subtitle">Tap each card. I have a few things to tell you.</p>
+  <div class="reason-grid" id="reasonGrid"></div>
+  <button class="btn" onclick="goTo('universe')">
+    Take Me To The Stars ✨
+  </button>
+</section>
+
+<section id="universe">
+  <p class="small-label">Chapter Four · Our Little Universe</p>
+  <h2 class="heading fade-in">If I Could Give You The Stars...</h2>
+  <p class="subtitle">
+    I'd give you every single one. Tap the stars.
+    Each one has something to say.
+  </p>
+  <div class="sky" id="sky"></div>
+  <h3 id="starMessage">✨ Pick a star, my love ✨</h3>
+  <button class="btn" onclick="goTo('finale')">
+    One Last Surprise →
+  </button>
+</section>
+
+<section id="finale">
+  <p class="small-label">The Final Chapter · November 16</p>
+  <h2 class="heading">One Last Thing, Baby...</h2>
+  <p class="subtitle">I saved something special for the end.</p>
+  <button class="gift" id="gift" onclick="openGift()">🎁</button>
+  <p id="giftHint">Tap your present!</p>
+
+  <div id="surprise">
+    <h1>Happy Birthday, <span id="birthdayName"></span>! 🎂</h1>
+    <p class="script">I love you endlessly.</p>
+    <p class="subtitle" style="margin:auto">
+      I hope this new chapter of your life brings you
+      happiness, beautiful memories, endless laughter,
+      and every wonderful thing your heart wishes for.
+      <br><br>
+      And I hope I get to keep making you smile
+      through all the chapters still to come.
+      <br><br>
+      You deserve the world. ❤️
+    </p>
+    <button class="btn" onclick="celebrate()">More Love! 💕</button>
+  </div>
+</section>
+
+<footer>
+  Made with ❤️ by <span id="footerName"></span><br>
+  For the girl who makes ordinary days extraordinary.<br>
+  November 16 · Always Special
+</footer>
+
+<script>
+// =============================================
+// PERSONALIZE THESE DETAILS
+// =============================================
+const CONFIG = {
+  herName: "HER_NAME",
+  yourName: "YOUR_NAME",
+  birthdayMonth: 11,
+  birthdayDay: 16,
+
+  letter: `Happy Birthday, my love! ❤️
+
+I wanted to make something a little different for you.
+Something that you could open whenever you wanted
+to feel just how special you are to me.
+
+Sometimes I wonder how one person can make
+such a big difference in someone's life.
+And then I think of you.
+
+You make the little moments feel important.
+You make ordinary conversations feel special.
+And you have this beautiful way of making me smile
+without even trying.
+
+I know I can't fit everything I feel for you
+into a single letter, or even an entire website.
+But I hope this little surprise reminds you
+how much you mean to me.
+
+On your birthday, I wish you all the happiness
+you deserve, all the dreams you want to chase,
+and a thousand little reasons to smile.
+
+Thank you for being you.
+
+Happy Birthday, baby.
+I love you. More than these words can say. ❤️`
+};
+
+// =============================================
+// BIRTHDAY COUNTDOWN
+// =============================================
+function updateCountdown() {
+  const now = new Date();
+  let year = now.getFullYear();
+  let target = new Date(year, CONFIG.birthdayMonth-1,
+                        CONFIG.birthdayDay);
+
+  if (now >= new Date(year,CONFIG.birthdayMonth-1,
+                      CONFIG.birthdayDay+1)) {
+    target = new Date(year+1,CONFIG.birthdayMonth-1,
+                      CONFIG.birthdayDay);
+  }
+
+  const diff = target-now;
+  const el = document.getElementById("countdown");
+
+  if (now.getMonth()+1 === CONFIG.birthdayMonth &&
+      now.getDate() === CONFIG.birthdayDay) {
+    el.innerHTML = '<h2 style="color:#ffc2d8">🎂 IT\'S YOUR DAY, BABY! 🎂</h2>';
+    return;
+  }
+
+  const days = Math.floor(diff/86400000);
+  const hours = Math.floor(diff/3600000)%24;
+  const mins = Math.floor(diff/60000)%60;
+  const secs = Math.floor(diff/1000)%60;
+
+  el.innerHTML = [
+    [days,"DAYS"],[hours,"HOURS"],
+    [mins,"MINUTES"],[secs,"SECONDS"]
+  ].map(([n,label]) =>
+    `<div class="timebox"><strong>${n}</strong><span>${label}</span></div>`
+  ).join("");
+}
+setInterval(updateCountdown,1000);
+updateCountdown();
+
+// =============================================
+// ROMANTIC Q&A GAME
+// =============================================
+const questions = [
+  {
+    q:"Who is the prettiest girl in my entire universe?",
+    options:["Me, obviously 💅","Definitely me 💗","Still me 😌"],
+    answer:"Correct! All answers lead to you. There was never any competition. ❤️"
+  },
+  {
+    q:"How much do I love you?",
+    options:["A lot 🥺","To the moon and back 🌙","More than words can say 💕"],
+    answer:"Trick question! There isn't a number big enough to measure it."
+  },
+  {
+    q:"What do I want to see on your face every day?",
+    options:["A smile 😊","A big happy grin 🥰","That cute little smile 💖"],
+    answer:"Exactly. Your happiness means so much to me."
+  },
+  {
+    q:"If I could choose you all over again, would I?",
+    options:["YES! ❤️","Obviously 😭","A million times 💍"],
+    answer:"Every single time. In every universe, I'd choose you. ♡"
+  }
+];
+
+let currentQ=0;
+let answered=false;
+
+function renderQuestion() {
+  answered=false;
+  const q=questions[currentQ];
+  document.getElementById("questionNumber").textContent =
+    `QUESTION ${currentQ+1} OF ${questions.length}`;
+  document.getElementById("question").textContent=q.q;
+  document.getElementById("progressBar").style.width =
+    ((currentQ)/questions.length*100)+"%";
+  document.getElementById("answerReveal").textContent="";
+  document.getElementById("nextQuestion").style.display="none";
+
+  const options=document.getElementById("options");
+  options.innerHTML="";
+  q.options.forEach(option=>{
+    const btn=document.createElement("button");
+    btn.className="option";
+    btn.textContent=option;
+    btn.onclick=()=>chooseAnswer(btn);
+    options.appendChild(btn);
+  });
+}
+function chooseAnswer(btn) {
+  if(answered)return;
+  answered=true;
+  btn.style.background="#a63c71";
+  document.getElementById("answerReveal").textContent=
+    questions[currentQ].answer;
+  document.getElementById("nextQuestion").style.display="inline-block";
+  document.getElementById("nextQuestion").textContent =
+    currentQ===questions.length-1 ? "Open The Next Chapter 💌" : "Next Question →";
+  burstHearts(10);
+}
+function nextQ() {
+  currentQ++;
+  if(currentQ>=questions.length) {
+    document.getElementById("progressBar").style.width="100%";
+    goTo("letter");
+  } else renderQuestion();
+}
+renderQuestion();
+
+// =============================================
+// LOVE LETTER
+// =============================================
+document.getElementById("loveLetter").textContent=CONFIG.letter;
+document.getElementById("loveLetter").style.whiteSpace="pre-line";
+document.getElementById("signature").textContent=CONFIG.yourName;
+document.getElementById("footerName").textContent=CONFIG.yourName;
+document.getElementById("birthdayName").textContent=CONFIG.herName;
+
+function openLetter() {
+  document.getElementById("envelope").style.display="none";
+  document.getElementById("envelopeHint").style.display="none";
+  document.getElementById("letterPaper").style.display="block";
+  burstHearts(20);
+}
+
+// =============================================
+// FLIP CARDS
+// =============================================
+const reasons=[
+  ["🌷","Your Smile","Because seeing you happy makes my day better."],
+  ["💗","Your Heart","Because there's something so beautiful about the person you are."],
+  ["✨","Your Magic","Because you make the simplest moments feel special."],
+  ["🌙","Your Presence","Because even ordinary days feel different with you."],
+  ["🧸","Your Cuteness","Because you manage to be adorable without even trying."],
+  ["♾️","Just You","Because I don't need a special reason. You're you, and that's enough."]
+];
+
+const grid=document.getElementById("reasonGrid");
+reasons.forEach(([emoji,title,description])=>{
+  const card=document.createElement("div");
+  card.className="reason";
+  card.tabIndex=0;
+  card.setAttribute("role","button");
+  card.setAttribute("aria-label","Flip card: "+title);
+  card.innerHTML=`
+    <div class="reason-inner">
+      <div class="front"><span>${emoji}</span><h3>${title}</h3><small>Tap to reveal ♡</small></div>
+      <div class="back"><h3>${title}</h3><p>${description}</p></div>
+    </div>`;
+  card.onclick=()=>card.classList.toggle("flipped");
+  card.onkeydown=e=>{
+    if(e.key==="Enter"||e.key===" "){
+      e.preventDefault();
+      card.click();
+    }
+  };
+  grid.appendChild(card);
+});
+
+// =============================================
+// INTERACTIVE STARS
+// =============================================
+const starMessages=[
+  "You are my favorite notification. 💌",
+  "I hope you always know how special you are. ❤️",
+  "Your smile deserves its own constellation. ✨",
+  "I wish I could bottle up all our happy moments. 🌷",
+  "You make my world a little brighter. 🌟",
+  "If hugs could travel through screens, you'd have one now. 🫂",
+  "Here's to a million more smiles together. 💗",
+  "I love you, even when I'm annoying. 😭",
+  "You're my favorite kind of magic. 🌙",
+  "Every love song makes a little more sense with you. 🎶",
+  "You deserve all the happiness in the universe. 🥹",
+  "I choose you. Again and again. ♡"
+];
+
+const sky=document.getElementById("sky");
+starMessages.forEach((message,i)=>{
+  const star=document.createElement("button");
+  star.className="star";
+  star.textContent="✦";
+  star.style.left=(8+(i*37%85))+"%";
+  star.style.top=(8+(i*29%80))+"%";
+  star.style.animationDelay=(i*.25)+"s";
+  star.setAttribute("aria-label","Reveal star message "+(i+1));
+  star.onclick=()=>{
+    document.getElementById("starMessage").textContent=message;
+    burstHearts(5);
+  };
+  sky.appendChild(star);
+});
+
+// =============================================
+// SURPRISE FINALE
+// =============================================
+function openGift(){
+  document.getElementById("gift").style.display="none";
+  document.getElementById("giftHint").style.display="none";
+  document.getElementById("surprise").style.display="block";
+  celebrate();
+}
+function celebrate(){
+  burstHearts(90);
+  for(let i=0;i<100;i++){
+    const confetti=document.createElement("div");
+    confetti.style.cssText=`
+      position:fixed;
+      left:${Math.random()*100}vw;
+      top:-20px;
+      width:${5+Math.random()*9}px;
+      height:${8+Math.random()*12}px;
+      background:${["#ff78aa","#ffd37e","#cba5ff","#ffffff","#ffb8d3"][i%5]};
+      z-index:100;
+      pointer-events:none;
+      transform:rotate(${Math.random()*360}deg);
+      transition:top ${2+Math.random()*3}s linear,
+                 transform ${2+Math.random()*3}s linear;
+    `;
+    document.body.appendChild(confetti);
+    requestAnimationFrame(()=>{
+      confetti.style.top="110vh";
+      confetti.style.transform=`rotate(${Math.random()*900}deg)`;
+    });
+    setTimeout(()=>confetti.remove(),5500);
+  }
+}
+
+// =============================================
+// FLOATING HEARTS
+// =============================================
+function burstHearts(count){
+  for(let i=0;i<count;i++){
+    const heart=document.createElement("div");
+    heart.className="heart";
+    heart.textContent=["💗","💕","❤️","💖","🌸"][Math.floor(Math.random()*5)];
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.top=(60+Math.random()*40)+"vh";
+    heart.style.fontSize=(14+Math.random()*24)+"px";
+    heart.style.animationDuration=(2+Math.random()*3)+"s";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),5500);
+  }
+}
+setInterval(()=>burstHearts(1),1600);
+
+// =============================================
+// SCROLL ANIMATIONS
+// =============================================
+function goTo(id){
+  document.getElementById(id).scrollIntoView({behavior:"smooth"});
+}
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("visible");
+    }
+  });
+},{threshold:.12});
+document.querySelectorAll(".fade-in").forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
